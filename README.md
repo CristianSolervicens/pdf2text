@@ -39,12 +39,11 @@ Tiene tres puntos de entrada:
 response = requests.post(url, json={'pdf_base64': data}, headers={'Content-Type': 'application/json'})
 if response.status_code == 200:
     print('Success!')
-    normales += 1
     js = response.json()
     if 'text' in js.keys():
         print(js['text'].strip())
-    else:
-        print(js['error'])
+else:
+    print(js['error'])
 ```
 
 **Ejemplo de llamada a "/_pdfrepair_/"**
@@ -52,13 +51,12 @@ if response.status_code == 200:
 response = requests.post(url_repair, json={'pdf_base64': data}, headers={'Content-Type':'application/json'})
 if response.status_code == 200:
     print('Success!')
-    reparadas += 1
     js = response.json()
     if 'text' in js.keys():
         print(js['text'].strip())
         print(js['repaired_pdf_base64'])
-    else:
-        print(js['error'])
+else:
+    print(js['error'])
 ```
 
 **Ejemplo de llamada a "/_test_/"**
